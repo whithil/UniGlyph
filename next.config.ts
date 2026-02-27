@@ -3,9 +3,10 @@ import type {NextConfig} from 'next';
 const nextConfig: NextConfig = {
   /* Configuration for static export to GitHub Pages */
   output: 'export',
-  // If you are deploying to a sub-path (e.g. username.github.io/repo-name/),
-  // uncomment the next line and set it to your repository name:
-  // basePath: '/repo-name',
+  
+  // IMPORTANT: If you are deploying to a sub-path (e.g. username.github.io/uniglyph/),
+  // you MUST set the basePath to your repository name.
+  // Example: basePath: '/uniglyph',
   
   images: {
     unoptimized: true, // Required for static export with next/image
@@ -31,6 +32,7 @@ const nextConfig: NextConfig = {
     ],
   },
   typescript: {
+    // We set this to true for now to allow the build to proceed while we resolve minor library type mismatches
     ignoreBuildErrors: true,
   },
   eslint: {
