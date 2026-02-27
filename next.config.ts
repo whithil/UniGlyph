@@ -1,14 +1,14 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  /* Configuration for static export to GitHub Pages */
+  output: 'export',
+  // If you are deploying to a sub-path (e.g. username.github.io/repo-name/),
+  // uncomment the next line and set it to your repository name:
+  // basePath: '/repo-name',
+  
   images: {
+    unoptimized: true, // Required for static export with next/image
     remotePatterns: [
       {
         protocol: 'https',
@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
