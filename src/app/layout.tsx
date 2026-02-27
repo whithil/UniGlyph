@@ -1,11 +1,53 @@
 
-import type {Metadata} from 'next';
+import type {Metadata, Viewport} from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 
+const APP_NAME = 'UniGlyph';
+const APP_DEFAULT_TITLE = 'UniGlyph | Unicode Presentation Swap';
+const APP_TITLE_TEMPLATE = '%s | UniGlyph';
+const APP_DESCRIPTION = 'Convert colored emojis to their monochrome text-presentation variants effortlessly. High-precision utility for clean, professional Unicode text.';
+
 export const metadata: Metadata = {
-  title: 'UniGlyph | Unicode Presentation Swap',
-  description: 'Convert colored emojis to their monochrome text-presentation variants effortlessly.',
+  applicationName: APP_NAME,
+  title: {
+    default: APP_DEFAULT_TITLE,
+    template: APP_TITLE_TEMPLATE,
+  },
+  description: APP_DESCRIPTION,
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: APP_NAME,
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    siteName: APP_NAME,
+    title: {
+      default: APP_DEFAULT_TITLE,
+      template: APP_TITLE_TEMPLATE,
+    },
+    description: APP_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary',
+    title: {
+      default: APP_DEFAULT_TITLE,
+      template: APP_TITLE_TEMPLATE,
+    },
+    description: APP_DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#3b82f6',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

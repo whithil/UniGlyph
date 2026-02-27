@@ -19,8 +19,28 @@ export default function Home() {
 
   const t = translations[locale];
 
+  // Structured Data for SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "UniGlyph",
+    "description": t.heroDesc,
+    "applicationCategory": "Utility",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   return (
     <main className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       {/* Navigation / Header */}
       <header className="w-full border-b bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
